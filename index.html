@@ -114,6 +114,7 @@ runway-section:not(.rw--js){min-height:calc(100svh - 88px)}
 <style>runway-section,.site-header,.rw__panel,.rw__item{font-family:"Tajawal",Helvetica,Arial,sans-serif}</style>
 <style>
 /* premium polish */
+.rw__controls{display:none!important}
 ::selection{background:#B8842A;color:#fff}
 .site-header{border-bottom:0;box-shadow:0 1px 0 rgba(21,20,19,.06),0 18px 36px -26px rgba(14,26,56,.28)}
 :focus-visible{outline-color:#B8842A!important}
@@ -145,6 +146,26 @@ runway-section:not(.rw--js){min-height:calc(100svh - 88px)}
 .rw__dfoot{flex:none;padding:18px 32px 24px;display:grid;gap:14px;background:#fff;box-shadow:0 -18px 30px -22px rgba(14,26,56,.22)}
 .rw__dtotal{display:flex;justify-content:space-between;align-items:center;font-size:11px;color:#66625c;text-transform:uppercase;letter-spacing:.12em}.rw__dtotal div{display:flex;gap:10px;align-items:baseline}.rw__dtotal b{font-size:20px;color:#151413;letter-spacing:-.01em;text-transform:none}.rw__dtotal s{text-transform:none;letter-spacing:0;color:#9a958c;font-size:12px}
 .rw__dall{display:flex;justify-content:center;align-items:center;gap:10px;padding:16px;border-radius:14px;background:#151413;color:#fff;font-size:14px;font-weight:500;transition:transform .45s var(--rw-ease),box-shadow .45s var(--rw-ease)}.rw__dall:hover{transform:translateY(-2px);box-shadow:0 18px 34px -16px rgba(14,26,56,.55)}.rw__dall i{font-size:18px}
+</style>
+<style>
+/* mobile: product details become a bottom sheet over the open collection */
+html{-webkit-text-size-adjust:100%}.rw__dwa,.rw__dall{min-height:44px}
+@media(max-width:749px){
+.rw--zoom .rw__lb-stage{inset:68px 12px calc(50svh + 6px)}
+.rw--zoom .rw__panel{position:fixed;left:0;right:0;bottom:0;top:auto;z-index:2000;height:50svh;margin:0;border-radius:22px 22px 0 0;box-shadow:0 -24px 60px -24px rgba(14,26,56,.4);opacity:1}
+.rw--zoom .rw__panel-inner{position:absolute;inset:0}
+.rw__dhead{padding:20px 20px 10px;gap:6px}.rw__dback,.rw__ddesc{display:none}.rw__dtitle{font-size:20px}
+.rw__dlist{padding:4px 20px 14px}.rw__dp{padding:14px}
+.rw__dfoot{padding:12px 20px calc(14px + env(safe-area-inset-bottom,0px))}
+}
+</style>
+<style>
+/* phone performance & touch hardening */
+@media(max-width:749px),(hover:none){
+.rw__model{filter:none!important;will-change:transform,opacity}
+.rw__stage{overscroll-behavior-x:none;-webkit-user-select:none;user-select:none;-webkit-touch-callout:none}
+.rw__stage img{-webkit-user-drag:none;-webkit-touch-callout:none}
+}
 </style>
 </head>
 <body>
