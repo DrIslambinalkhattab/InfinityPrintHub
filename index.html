@@ -137,6 +137,15 @@ runway-section:not(.rw--js){min-height:calc(100svh - 88px)}
 .rw__dc b{font-weight:500;font-size:15px;display:block}.rw__dc p{margin:6px 0 0;font-size:13px;line-height:1.6;color:#66625c}
 .rw__dwa{grid-column:2;justify-self:start;margin-top:8px;display:inline-flex;gap:8px;align-items:center;font-size:12px;font-weight:500;padding:9px 14px;border-radius:30px;border:1px solid #e2e2e2;transition:all .35s var(--rw-ease)}.rw__dwa:hover{background:#151413;color:#fff;border-color:#151413}.rw__dwa i{font-size:14px}
 </style>
+<style>
+/* prices, offers & full-set inquiry */
+.rw__dprice{display:flex;flex-wrap:wrap;align-items:baseline;gap:4px 10px;margin-top:10px}.rw__dprice b{font-size:16px;font-weight:700;letter-spacing:-.01em}.rw__dprice s{font-size:12px;color:#9a958c}.rw__dprice small{flex-basis:100%;font-size:11px;color:#66625c}
+.rw__dprice em,.rw__dtotal em{font-style:normal;font-size:11px;font-weight:700;color:#8a5f12;background:#f6ecd5;padding:3px 9px;border-radius:20px}
+.rw__dbadge{display:inline-block;font-size:10px;letter-spacing:.08em;text-transform:uppercase;font-weight:700;color:#fff;background:#B8842A;padding:4px 10px;border-radius:20px}
+.rw__dfoot{flex:none;padding:18px 32px 24px;display:grid;gap:14px;background:#fff;box-shadow:0 -18px 30px -22px rgba(14,26,56,.22)}
+.rw__dtotal{display:flex;justify-content:space-between;align-items:center;font-size:11px;color:#66625c;text-transform:uppercase;letter-spacing:.12em}.rw__dtotal div{display:flex;gap:10px;align-items:baseline}.rw__dtotal b{font-size:20px;color:#151413;letter-spacing:-.01em;text-transform:none}.rw__dtotal s{text-transform:none;letter-spacing:0;color:#9a958c;font-size:12px}
+.rw__dall{display:flex;justify-content:center;align-items:center;gap:10px;padding:16px;border-radius:14px;background:#151413;color:#fff;font-size:14px;font-weight:500;transition:transform .45s var(--rw-ease),box-shadow .45s var(--rw-ease)}.rw__dall:hover{transform:translateY(-2px);box-shadow:0 18px 34px -16px rgba(14,26,56,.55)}.rw__dall i{font-size:18px}
+</style>
 </head>
 <body>
   <header class="site-header shopify-section-group-header-group">
@@ -179,13 +188,13 @@ runway-section:not(.rw--js){min-height:calc(100svh - 88px)}
 /* ==========================================================
    DATA — الداتا كلها في data/products.json (بتتعدل من admin.html)
    ========================================================== */
-const SITE={whatsapp:'201000000000',waText:'Hello, I would like to ask about your products.',waProductText:'Hello, I would like to ask about: '};
+const SITE={whatsapp:'201000000000',waText:'Hello, I would like to ask about your products.',waProductText:'Hello, I would like to ask about: ',waBundleText:'Hello, I would like to ask about the full set: ',currency:''};
 const IMG_PATH='images/';
 let PRODUCT_DATA={},COLLECTIONS=[],LOOKS=[],COUNT=0,SLOTS=0;
 const buildLooks=d=>{PRODUCT_DATA={};Object.assign(SITE,d.site||{});
   COLLECTIONS=(d.collections||[]).map((c,ci)=>{const sheet=c.mode==='sheet',cimg=sheet&&c.image?`c${ci}img`:null;if(cimg)PRODUCT_DATA[cimg]={name:'',desc:'',image:c.image};
     const list=sheet&&!cimg?[]:(c.products||[]).filter(p=>p&&p.name&&(!sheet||Array.isArray(p.box)));
-    return{name:c.name||'Untitled',description:c.description||'',icon:c.icon||'fa-box-open',cimg,products:list.map((p,pi)=>{const id=`c${ci}p${pi}`;PRODUCT_DATA[id]=sheet?{name:p.name,desc:p.desc||'',box:p.box,skip:1}:{name:p.name,desc:p.desc||'',image:p.image||id};return id})}});
+    return{name:c.name||'Untitled',description:c.description||'',icon:c.icon||'fa-box-open',cimg,bundle:+c.bundlePrice||0,bundleOld:+c.bundleOld||0,badge:c.badge||'',products:list.map((p,pi)=>{const id=`c${ci}p${pi}`;PRODUCT_DATA[id]=sheet?{name:p.name,desc:p.desc||'',box:p.box,skip:1}:{name:p.name,desc:p.desc||'',image:p.image||id};Object.assign(PRODUCT_DATA[id],{price:+p.price||0,oldPrice:+p.oldPrice||0,note:p.note||'',badge:p.badge||''});return id})}});
   LOOKS=COLLECTIONS.filter(c=>c.products.length);COUNT=LOOKS.length;SLOTS=COUNT*2};
 const loadData=()=>new Promise(res=>{let fin=false;const done=d=>{if(fin)return;fin=true;try{buildLooks(d||{})}catch(e){console.warn(e);buildLooks({})}res()};
   const grab=()=>fetch('data/products.json?v='+Date.now(),{cache:'no-store'}).then(r=>r.json()).then(done).catch(()=>done({}));
@@ -244,8 +253,13 @@ function lbInfoMarkup(i){
   return look.products.map((id,n)=>{const p=PRODUCT_DATA[id];const nm=escapeHTML(p.name);
     return `<div class="rw__lbp" data-rw-lbp="${n+1}"><button type="button" class="rw__lbp-main" data-rw-lbp-main="${n+1}" aria-label="${n+1}: ${nm}"><span class="rw__lbp-thumb${p.alpha?' has-alpha':''}">${p.src?`<img src="${p.src}" alt="" decoding="async" draggable="false">`:`<i class="fa-solid ${look.icon||'fa-box-open'}" aria-hidden="true"></i>`}<span class="rw__lbp-n">${n+1}</span></span><span class="rw__lbp-copy"><b dir="auto">${nm}</b>${p.desc?`<small dir="auto">${escapeHTML(p.desc)}</small>`:''}</span></button><a class="rw__lbp-wa" href="${waLink(SITE.waProductText+p.name)}" target="_blank" rel="noopener noreferrer" aria-label="Ask about ${nm} on WhatsApp"><i class="fa-brands fa-whatsapp" aria-hidden="true"></i></a></div>`}).join('');
 }
+const money=v=>`${Number(v).toLocaleString('en-US')}${SITE.currency?' '+escapeHTML(SITE.currency):''}`;
+const bundleInfo=look=>{const ps=look.products.map(id=>PRODUCT_DATA[id]),sum=ps.reduce((n,p)=>n+p.price,0),all=ps.every(p=>p.price>0),bp=look.bundle||(all?sum:0),bo=look.bundle?(look.bundleOld||(all&&sum>look.bundle?sum:0)):0;return{ps,sum,all,bp,bo}};
+const priceMarkup=p=>{if(!p.price&&!p.badge)return'';const off=p.oldPrice>p.price&&p.price>0;return `<div class="rw__dprice">${p.badge?`<span class="rw__dbadge">${escapeHTML(p.badge)}</span>`:''}${p.note?`<small dir="auto">${escapeHTML(p.note)}</small>`:''}${p.price?`<b>${money(p.price)}</b>`:''}${off?`<s>${money(p.oldPrice)}</s><em>-${Math.round((1-p.price/p.oldPrice)*100)}%</em>`:''}</div>`};
+const bundleText=look=>{const{ps,bp}=bundleInfo(look);return `${SITE.waBundleText}${look.name}\n`+ps.map((p,k)=>`${k+1}. ${p.name}${p.price?` — ${Number(p.price).toLocaleString('en-US')}${SITE.currency?' '+SITE.currency:''}`:''}`).join('\n')+(bp?`\nTotal: ${Number(bp).toLocaleString('en-US')}${SITE.currency?' '+SITE.currency:''}`:'')};
+const footMarkup=look=>{const{bp,bo}=bundleInfo(look);return `<div class="rw__dfoot">${bp?`<div class="rw__dtotal"><span>${look.bundle?'Set price':'Total'}</span><div><b>${money(bp)}</b>${bo>bp?`<s>${money(bo)}</s><em>Save ${money(bo-bp)}</em>`:''}</div></div>`:''}<a class="rw__dall" href="${waLink(bundleText(look))}" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-whatsapp"></i> Ask about the full set</a></div>`};
 function detailMarkup(i){const look=LOOKS[i],n=look.products.length;
-  return `<div class="rw__dhead"><button type="button" class="rw__dback" data-rw-zoom-close><i class="fa-solid fa-arrow-left-long"></i> All collections</button><span class="rw__type">Collection ${pad(i+1)} · ${n} ${n>1?'products':'product'}</span><h3 class="rw__dtitle" dir="auto">${escapeHTML(look.name)}</h3>${look.description?`<p class="rw__ddesc" dir="auto">${escapeHTML(look.description)}</p>`:''}</div><div class="rw__dlist">${look.products.map((id,k)=>{const p=PRODUCT_DATA[id];return `<article class="rw__dp" data-rw-dp="${k+1}"><span class="rw__dn">${k+1}</span><div class="rw__dc"><b dir="auto">${escapeHTML(p.name)}</b>${p.desc?`<p dir="auto">${escapeHTML(p.desc)}</p>`:''}</div><a class="rw__dwa" href="${waLink(SITE.waProductText+p.name)}" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-whatsapp"></i> Ask on WhatsApp</a></article>`}).join('')}</div>`}
+  return `<div class="rw__dhead"><button type="button" class="rw__dback" data-rw-zoom-close><i class="fa-solid fa-arrow-left-long"></i> All collections</button><span class="rw__type">Collection ${pad(i+1)} · ${n} ${n>1?'products':'product'}</span>${look.badge?`<span class="rw__dbadge">${escapeHTML(look.badge)}</span>`:''}<h3 class="rw__dtitle" dir="auto">${escapeHTML(look.name)}</h3>${look.description?`<p class="rw__ddesc" dir="auto">${escapeHTML(look.description)}</p>`:''}</div><div class="rw__dlist">${look.products.map((id,k)=>{const p=PRODUCT_DATA[id];return `<article class="rw__dp" data-rw-dp="${k+1}"><span class="rw__dn">${k+1}</span><div class="rw__dc"><b dir="auto">${escapeHTML(p.name)}</b>${p.desc?`<p dir="auto">${escapeHTML(p.desc)}</p>`:''}${priceMarkup(p)}</div><a class="rw__dwa" href="${waLink(SITE.waProductText+p.name)}" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-whatsapp"></i> Ask on WhatsApp</a></article>`}).join('')}</div>${footMarkup(look)}`}
 function panelMarkup(i){
   const rows=LOOKS.map((_,j)=>lookRowMarkup(i,j)).join('');
   return `<div class="rw__look-panel${i===0?' is-in':''}" data-rw-panel="${i}"${i===0?'':' hidden'}>
