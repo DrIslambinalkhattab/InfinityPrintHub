@@ -19,6 +19,11 @@
           "name": "قلم مع تكه واحده",
           "desc": "حفر بالليزر",
           "image": "item-mw9umpk6.webp"
+        },
+        {
+          "name": "بقق",
+          "desc": "ققق",
+          "image": "item-mw9unjmx.webp"
         }
       ]
     }
