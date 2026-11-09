@@ -80,6 +80,7 @@ main section{background:var(--card);border-radius:22px;box-shadow:var(--sh);padd
   <div class="top">
     <div class="brand">INFINITY <small>لوحة التحكم</small></div><span class="sp"></span>
     <span class="st"><i class="dot" id="dot"></i><span id="stx">كل التعديلات منشورة</span></span>
+    <button class="btn" id="clean" data-a="clean" title="مسح الصور غير المستخدمة من الريبو"><i class="fa-solid fa-broom"></i> تنظيف الصور</button>
     <button class="btn" data-a="preview"><i class="fa-regular fa-eye"></i> معاينة</button>
     <button class="btn pri" id="save" data-a="save" disabled><i class="fa-solid fa-cloud-arrow-up"></i> حفظ ونشر</button>
     <button class="ib" data-a="logout" title="تسجيل خروج"><i class="fa-solid fa-right-from-bracket"></i></button>
@@ -97,6 +98,15 @@ const slug=s=>String(s||'').toLowerCase().replace(/[^a-z0-9]+/g,'-').replace(/^-
 let cfg=JSON.parse(localStorage.getItem('ipb-cfg')||'null'),S={data:null,sha:null,dirty:false,ci:0,pending:{}},tgt=null;
 const api=(p,o={})=>fetch('https://api.github.com/repos/'+cfg.repo+(p?'/'+p:''),{...o,headers:{Authorization:'Bearer '+cfg.token,Accept:'application/vnd.github+json'}});
 const FILE='contents/data/products.json';
+/* ---- image housekeeping: one commit deletes any number of files ---- */
+const used=()=>{const u=new Set();S.data.collections.forEach(c=>{c.image&&u.add(c.image);c.products.forEach(p=>p.image&&u.add(p.image))});return u};
+async function listImages(){const r=await api('contents/images?ref='+encodeURIComponent(cfg.branch));if(!r.ok)throw Error('تعذر قراءة فولدر الصور ('+r.status+')');return(await r.json()).filter(f=>f.type==='file'&&f.name!=='.gitkeep').map(f=>f.name)}
+async function delFiles(paths){const J=async(p,m,b)=>{const r=await api(p,{method:m,body:b&&JSON.stringify(b)});if(!r.ok)throw Error('فشل الحذف ('+r.status+')');return r.json()};
+  const ref=await J('git/ref/heads/'+cfg.branch),cm=await J('git/commits/'+ref.object.sha),tr=await J('git/trees','POST',{base_tree:cm.tree.sha,tree:paths.map(path=>({path,mode:'100644',type:'blob',sha:null}))}),nc=await J('git/commits','POST',{message:'Remove '+paths.length+' unused image(s)',tree:tr.sha,parents:[ref.object.sha]});await J('git/refs/heads/'+cfg.branch,'PATCH',{sha:nc.sha})}
+async function tidy(){const u=used(),stale=[...S.known].filter(n=>!u.has(n));S.known=u;if(!stale.length)return;
+  try{const ex=new Set(await listImages()),d=stale.filter(n=>ex.has(n));if(d.length)await delFiles(d.map(n=>'images/'+n))}catch(e){toast('اتنشر، لكن تعذر مسح صور قديمة: '+e.message,'err')}}
+async function cleanup(){if(S.dirty)return toast('احفظ تعديلاتك الأول','err');const b=$('#clean');b.classList.add('busy');
+  try{const u=used(),un=(await listImages()).filter(n=>!u.has(n));if(!un.length)toast('مفيش صور زيادة ✓');else if(confirm(`هيتمسح ${un.length} صورة غير مستخدمة نهائيًا من الريبو:\n\n${un.join('\n')}\n\nتكمل؟`)){await delFiles(un.map(n=>'images/'+n));toast(`اتمسحت ${un.length} صورة ✓`)}}catch(e){toast(e.message,'err')}b.classList.remove('busy')}
 function toast(m,t){const e=document.createElement('div');e.className='toast '+(t||'');e.textContent=m;document.body.append(e);setTimeout(()=>e.remove(),t?5000:3200)}
 function setDirty(v){S.dirty=v;$('#save').disabled=!v;$('#dot').classList.toggle('d',v);$('#stx').textContent=v?'في تعديلات لسه متنشرتش':'كل التعديلات منشورة'}
 /* ---- connect ---- */
@@ -105,7 +115,7 @@ async function connect(){
   const f=await api(FILE+'?ref='+encodeURIComponent(cfg.branch));
   if(f.ok){const j=await f.json();S.sha=j.sha;S.data=JSON.parse(dec(j.content))}else if(f.status==404)S.data={};else throw Error('تعذر قراءة الملف ('+f.status+')');
   S.data.site=Object.assign({whatsapp:'',waText:'',waProductText:'',currency:'EGP',waBundleText:'Hello, I would like to ask about the full set: '},S.data.site);S.data.collections=(S.data.collections||[]).map(c=>({icon:'fa-box-open',description:'',...c,products:c.products||[]}));
-  S.ci=S.data.collections.length?0:'settings';$('#login').hidden=true;$('#app').hidden=false;render();
+  S.known=used();S.ci=S.data.collections.length?0:'settings';$('#login').hidden=true;$('#app').hidden=false;render();
 }
 $('#lf').onsubmit=async e=>{e.preventDefault();cfg={repo:$('#repo').value.trim(),branch:$('#branch').value.trim(),token:$('#token').value.trim()};const b=$('#lbtn');b.classList.add('busy');$('#lerr').textContent='';
   try{await connect();$('#rem').checked?localStorage.setItem('ipb-cfg',JSON.stringify(cfg)):localStorage.removeItem('ipb-cfg')}catch(x){$('#lerr').textContent=x.message}b.classList.remove('busy')};
@@ -148,6 +158,7 @@ document.addEventListener('click',async e=>{const b=e.target.closest('[data-a]')
   else if(a==='img'){tgt=b.dataset.t==='sheet'?'sheet':pi;$('#fi').click()}
   else if(a==='mode'){const m=b.dataset.m;if((c.mode||'multi')===m)return;if(c.products.some(p=>p.name||p.box)&&!confirm('تغيير النمط هيمسح منتجات المجموعة الحالية. تكمل؟'))return;c.mode=m;c.products=m==='multi'?[{name:'',desc:'',image:''}]:[];if(m==='multi')delete c.image;setDirty(true);render()}
   else if(a==='save')save();
+  else if(a==='clean')cleanup();
   else if(a==='preview'||a==='refresh'){$('#fr').src='index.html?preview=1&t='+Date.now();$('#dr').classList.add('on')}
   else if(a==='close')$('#dr').classList.remove('on');
   else if(a==='logout'&&(!S.dirty||confirm('في تعديلات مش متنشرة، تخرج برضو؟'))){localStorage.removeItem('ipb-cfg');S.dirty=false;location.reload()}
@@ -157,13 +168,13 @@ async function prep(f){const bm=await createImageBitmap(f),k=Math.min(1,1600/Mat
 $('#fi').onchange=async()=>{const f=$('#fi').files[0];$('#fi').value='';if(!f||tgt===null)return;const c=cols()[S.ci],sheet=tgt==='sheet',p=sheet?c:c.products[tgt],card=document.querySelector(sheet?'.sheetbox':`[data-pi="${tgt}"]`);card.classList.add('up');
   try{const bl=await prep(f),du=await new Promise(r=>{const x=new FileReader();x.onload=()=>r(x.result);x.readAsDataURL(bl)}),name=(slug(p.name||c.name)||'item')+'-'+Date.now().toString(36)+(bl.type==='image/webp'?'.webp':'.png');
     const r=await api('contents/images/'+name,{method:'PUT',body:JSON.stringify({message:'Add image '+name,content:du.split(',')[1],branch:cfg.branch})});if(!r.ok)throw Error('فشل رفع الصورة ('+r.status+')');
-    S.pending[name]=du;p.image=name;setDirty(true);render()}catch(x){toast(x.message,'err');card.classList.remove('up')}};
+    S.pending[name]=du;S.known.add(name);p.image=name;setDirty(true);render()}catch(x){toast(x.message,'err');card.classList.remove('up')}};
 /* ---- save / publish ---- */
 const validate=()=>{for(const[i,c]of cols().entries()){if(!c.name.trim())return`المجموعة رقم ${i+1} محتاجة اسم`;if(c.mode==='sheet'&&!c.image)return`ارفع صورة المجموعة "${c.name}"`;if(!c.products.length)return`المجموعة "${c.name}" مفيهاش منتجات`;if(c.products.some(p=>!p.name.trim()))return`في منتج من غير اسم داخل "${c.name}"`}};
 async function save(){const er=validate();if(er)return toast(er,'err');const btn=$('#save');btn.classList.add('busy');
   const body=()=>JSON.stringify({message:'Update catalog via admin',content:enc(JSON.stringify(S.data,null,2)),branch:cfg.branch,sha:S.sha||undefined});
   try{let r=await api(FILE,{method:'PUT',body:body()});if(r.status===409||r.status===422){const g=await api(FILE+'?ref='+encodeURIComponent(cfg.branch));if(g.ok)S.sha=(await g.json()).sha;r=await api(FILE,{method:'PUT',body:body()})}
-    if(!r.ok)throw Error('فشل الحفظ ('+r.status+')');S.sha=(await r.json()).content.sha;setDirty(false);toast('تم النشر ✓ الموقع هيتحدّث خلال حوالي دقيقة')}catch(x){toast(x.message,'err')}btn.classList.remove('busy')}
+    if(!r.ok)throw Error('فشل الحفظ ('+r.status+')');S.sha=(await r.json()).content.sha;setDirty(false);await tidy();toast('تم النشر ✓ الموقع هيتحدّث خلال حوالي دقيقة')}catch(x){toast(x.message,'err')}btn.classList.remove('busy')}
 /* ---- live preview: sends the unsaved draft to index.html?preview=1 ---- */
 addEventListener('message',e=>{if(e.origin!==location.origin||e.data?.type!=='ipb-ready')return;const d=JSON.parse(JSON.stringify(S.data));d.collections.forEach(c=>{if(S.pending[c.image])c.image=S.pending[c.image];c.products.forEach(p=>{if(S.pending[p.image])p.image=S.pending[p.image]})});e.source.postMessage({type:'ipb-data',data:d},location.origin)});
 addEventListener('beforeunload',e=>{if(S.dirty){e.preventDefault();e.returnValue=''}});
