@@ -4,28 +4,5 @@
     "waText": "Hello, I would like to ask about your products.",
     "waProductText": "Hello, I would like to ask about: "
   },
-  "collections": [
-    {
-      "name": "قلم معدن نقش ليزر",
-      "description": "قلم معدن",
-      "icon": "fa-pen-nib",
-      "products": [
-        {
-          "name": "قلم معدن بتكه",
-          "desc": "قلم للحفر باليزر ",
-          "image": "item-mw9umbwy.webp"
-        },
-        {
-          "name": "قلم مع تكه واحده",
-          "desc": "حفر بالليزر",
-          "image": "item-mw9umpk6.webp"
-        },
-        {
-          "name": "بقق",
-          "desc": "ققق",
-          "image": "item-mw9unjmx.webp"
-        }
-      ]
-    }
-  ]
+  "collections": []
 }
