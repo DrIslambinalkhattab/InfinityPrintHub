@@ -85,7 +85,7 @@ const ICONS={'fa-box-open':'عام','fa-medal':'جوائز وميداليات','
 const enc=s=>btoa(String.fromCharCode(...new TextEncoder().encode(s))),dec=s=>new TextDecoder().decode(Uint8Array.from(atob(s.replace(/\s/g,'')),c=>c.charCodeAt(0)));
 const slug=s=>String(s||'').toLowerCase().replace(/[^a-z0-9]+/g,'-').replace(/^-|-$/g,'');
 let cfg=JSON.parse(localStorage.getItem('ipb-cfg')||'null'),S={data:null,sha:null,dirty:false,ci:0,pending:{}},tgt=null;
-const api=(p,o={})=>fetch('https://api.github.com/repos/'+cfg.repo+'/'+p,{...o,headers:{Authorization:'Bearer '+cfg.token,Accept:'application/vnd.github+json'}});
+const api=(p,o={})=>fetch('https://api.github.com/repos/'+cfg.repo+(p?'/'+p:''),{...o,headers:{Authorization:'Bearer '+cfg.token,Accept:'application/vnd.github+json'}});
 const FILE='contents/data/products.json';
 function toast(m,t){const e=document.createElement('div');e.className='toast '+(t||'');e.textContent=m;document.body.append(e);setTimeout(()=>e.remove(),t?5000:3200)}
 function setDirty(v){S.dirty=v;$('#save').disabled=!v;$('#dot').classList.toggle('d',v);$('#stx').textContent=v?'في تعديلات لسه متنشرتش':'كل التعديلات منشورة'}
