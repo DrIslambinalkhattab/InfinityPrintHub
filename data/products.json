@@ -2,67 +2,72 @@
   "site": {
     "whatsapp": "201557307301⁩",
     "waText": "Hello, I would like to ask about your products.",
-    "waProductText": "Hello, I would like to ask about: "
+    "waProductText": "Hello, I would like to ask about: ",
+    "currency": "EGP",
+    "waBundleText": "Hello, I would like to ask about the full set: "
   },
   "collections": [
     {
-      "name": "مجموعه تيست",
-      "description": "",
       "icon": "fa-box-open",
+      "description": "",
+      "name": "مجموعه تيست",
       "products": [
         {
           "name": "3 اقلام ",
           "desc": "هبدا للـ3 اقلام",
           "box": [
-            2.7,
-            9.8,
-            39.4,
-            38.3
+            28.3,
+            23.9,
+            3,
+            5.5
           ]
         },
         {
           "name": "ميداليا اكريلك",
           "desc": "الهيئ والميئ",
           "box": [
-            64.7,
-            4.7,
-            24.3,
-            42
+            81.7,
+            24.6,
+            5.5,
+            6.6
           ]
         },
         {
           "name": "ميداليا معدن",
           "desc": "الاوف اح",
           "box": [
-            36.2,
-            37.2,
-            28.1,
-            27.2
+            46.8,
+            50.9,
+            6.2,
+            5.5
           ]
         },
         {
           "name": "بتاع تكريم",
           "desc": "انكش",
           "box": [
-            60,
-            51.9,
-            31.6,
-            43.8
+            74.4,
+            62.9,
+            7.3,
+            7.1
           ]
         },
         {
           "name": "انكش برضو ",
           "desc": "انكش",
           "box": [
-            1.9,
-            67.9,
-            54.6,
-            12.6
+            18.7,
+            68.4,
+            6.5,
+            5.9
           ]
         }
       ],
       "mode": "sheet",
-      "image": "item-mw9uzixi.webp"
+      "image": "item-mw9z4cmk.webp",
+      "bundlePrice": "750",
+      "bundleOld": "830",
+      "badge": "خصومات الجمعه البيضه"
     }
   ]
 }
