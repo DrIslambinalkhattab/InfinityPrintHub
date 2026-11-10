@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
-  <meta name="theme-color" content="#ffffff">
+  <meta name="theme-color" content="#F6F1E7">
   <meta name="description" content="Custom promotional products: awards, pens, drinkware, signage and corporate gifts. Explore each collection and tap a pin to view the product.">
   <title>Infinity Print Hub</title>
   <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 794 540%27%3E%3Cpath fill=%27%23C48A2A%27 d=%27M22 350C30 250 115 170 215 170C300 170 355 222 405 285L515 420C560 462 610 462 665 445C690 437 700 400 705 330C720 380 722 430 700 450C650 495 580 500 530 460C490 440 430 392 385 335L335 278C295 235 245 235 200 235C140 255 90 300 70 345Z%27/%3E%3Cpath fill=%27%230E1A38%27 d=%27M438 325C440 235 515 172 605 170C710 168 775 245 773 340C771 440 700 512 610 514C575 514 548 506 525 492C600 492 665 455 685 395C695 360 690 320 670 290C650 255 620 240 590 240C520 240 480 275 465 320Z%27/%3E%3C/svg%3E">
@@ -167,6 +167,46 @@ html{-webkit-text-size-adjust:100%}.rw__dwa,.rw__dall{min-height:44px}
 .rw__stage img{-webkit-user-drag:none;-webkit-touch-callout:none}
 }
 </style>
+<style>
+/* ===== comfort theme: warm ivory + soft navy ink (easier on the eyes than pure white/black) ===== */
+:root{--ivory:#F6F1E7;--ivory-2:#FAF6EE;--paper:#FFFDF8;--ink:#1B2236;--ink-soft:#645F55;--navy:#0E1A38;--gold:#B8842A;--line:#E4DCCB}
+html,body{background:var(--ivory);color:var(--ink)}
+runway-section{background:var(--ivory);color:var(--ink);--rw-stage:#F3EDE1;--rw-panel:var(--ivory-2);--rw-text:var(--ink);--rw-muted:var(--ink-soft);--rw-line:var(--line);--rw-accent:var(--navy)}
+.site-header{background:rgba(250,246,238,.88);-webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px);box-shadow:0 1px 0 rgba(184,132,42,.16),0 18px 36px -26px rgba(14,26,56,.26)}
+.site-header nav,.rw__title,.rw__dtitle{color:var(--navy)}
+.rw__left{background:radial-gradient(80% 70% at 50% 42%,#F8F3E9 0%,#F1EADC 62%,#EAE2D2 100%)}
+.rw__panel{background:var(--ivory-2);border-left-color:var(--line)}
+.rw__item,.rw__item:last-child{border-color:var(--line)}.rw__item:after{background:var(--gold)}
+.rw__sub,.rw__type,.rw__label,.rw__desc,.rw__ddesc,.rw__dc p,.rw__dback,.rw__price,.rw__go{color:var(--ink-soft)}
+.rw__name,.rw__dc b{color:var(--ink)}
+.rw__dfoot{background:var(--ivory-2)}
+.rw__dp{background:var(--paper);box-shadow:0 0 0 1px var(--line),0 12px 30px -20px rgba(14,26,56,.22)}
+.rw__dwa{border-color:var(--line)}
+.rw__dall,.wa-btn,.rw__dn,.cd__ico,.rw__lbp-wa,.rw__lbp-n{background:var(--navy)}
+.rw__dall:hover{box-shadow:0 18px 34px -16px rgba(14,26,56,.6)}
+.cd__act:hover .cd__ico,.cd__act.is-done .cd__ico{background:var(--navy)}.cd__act--wa:hover .cd__ico{background:#25d366}
+.wa-num{background:var(--paper);border-color:var(--line)}
+#contact-dialog{background:var(--ivory-2)}
+.rw__pin.is-hot .rw__pin-dot,.rw__pin:hover .rw__pin-dot,.rw__pin:focus-visible .rw__pin-dot{background:var(--navy)}
+.rw__cursor.is-link .rw__cursor-in,.rw__cursor.is-dragging .rw__cursor-in{background:var(--navy)}
+.rw__lb-close{background:rgba(250,246,238,.72);border-color:rgba(14,26,56,.18)}
+.rw__walk-line:after{background:var(--gold)}
+.empty-state{background:radial-gradient(60% 50% at 50% 38%,#FBF6EA,var(--ivory))}
+@media(max-width:749px){.rw__panel{background:var(--ivory-2)}}
+/* ===== product card backdrop: ivory studio, window light, paper grain, dried-flower sprigs ===== */
+.rw__comp{background:radial-gradient(120% 90% at 50% 0%,#FDF9F1 0%,#F6EEDF 55%,#EBE0CC 100%);box-shadow:inset 0 0 0 1px rgba(184,132,42,.16),0 40px 60px -42px rgba(60,44,20,.5),0 2px 6px -2px rgba(60,44,20,.1)}
+.rw__comp:before{content:"";position:absolute;inset:0;border-radius:inherit;z-index:0;pointer-events:none;background:linear-gradient(118deg,transparent 16%,rgba(255,255,255,.55) 29%,rgba(255,255,255,.08) 38%,transparent 46%,rgba(255,255,255,.3) 60%,transparent 74%),radial-gradient(90% 55% at 50% 108%,rgba(168,128,70,.2),transparent 70%),url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 .45 0 0 0 0 .36 0 0 0 0 .22 0 0 0 .55 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.3'/%3E%3C/svg%3E")}
+.rw__bd{position:absolute;inset:0;width:100%;height:100%;z-index:0;pointer-events:none;border-radius:inherit;opacity:.8}
+.rw__slot{z-index:1}
+.rw__slot img{mix-blend-mode:multiply}
+.rw__slot.has-alpha img{mix-blend-mode:normal}
+/* single product = feature piece: centered, floor shadow, caption */
+.rw__comp--solo .rw__slot:after{content:"";position:absolute;left:8%;right:8%;bottom:-2.5%;height:7%;border-radius:50%;background:radial-gradient(closest-side,rgba(60,42,18,.3),rgba(60,42,18,.1) 58%,transparent);filter:blur(.45em);z-index:-1}
+.rw__solo-cap{position:absolute;left:0;right:0;bottom:3.2%;z-index:2;display:flex;flex-direction:column;align-items:center;gap:.55em;padding:0 9%;text-align:center;font-weight:500;font-size:1.02em;line-height:1.3;color:var(--navy);opacity:.82;pointer-events:none;unicode-bidi:plaintext}
+.rw__solo-cap:before{content:"";width:2.6em;height:1px;background:var(--gold);opacity:.8}
+.rw__media .rw__solo-cap{display:none}
+.rw__dp--solo{grid-template-columns:1fr}.rw__dp--solo .rw__dn{display:none}.rw__dp--solo .rw__dc b{font-size:17px}
+</style>
 </head>
 <body>
   <header class="site-header shopify-section-group-header-group">
@@ -225,7 +265,7 @@ const showEmpty=()=>{const e=document.createElement('section');e.className='empt
 /* ---------- Engine ---------- */
 const AR=.8; /* نسبة كارت العرض 4:5 */
 const LAYOUTS={ /* [x,y,w,h] بالنسبة المئوية داخل الكارت، حسب عدد المنتجات */
-  1:[[12,9,76,82]],
+  1:[[14,8,72,72]],
   2:[[9,5,82,45],[9,52,82,43]],
   3:[[7,5,86,50],[6,59,45,35],[49,59,45,35]],
   4:[[6,6,45,41],[49,6,45,41],[6,53,45,41],[49,53,45,41]]
@@ -239,18 +279,33 @@ const resolveProducts=()=>Promise.race([Promise.all(Object.values(PRODUCT_DATA).
 
 const escapeHTML=s=>String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const modulo=(n,m)=>((n%m)+m)%m;
-const lookLabel=(i)=>`Collection ${i+1}: ${LOOKS[i].name}`;
+const lookLabel=(i)=>`${kindOf(LOOKS[i])} ${i+1}: ${LOOKS[i].name}`;
 
 const pad=n=>String(n).padStart(2,'0');
+const kindOf=l=>l.products.length>1?'Collection':'Product';
+/* ---------- backdrop: soft ivory studio with dried-flower sprigs (generated once, reused via <use>) ---------- */
+const bdRand=a=>()=>{a=Math.imul(a^a>>>15,a|1);a^=a+Math.imul(a^a>>>7,a|61);return((a^a>>>14)>>>0)/4294967296};
+function bdSprig(r,x,y,ang,len,d,o){const f=v=>v.toFixed(1),q=ang*Math.PI/180,ex=x+Math.sin(q)*len,ey=y-Math.cos(q)*len,bend=(r()-.5)*len*.4,cx=(x+ex)/2+Math.cos(q)*bend,cy=(y+ey)/2+Math.sin(q)*bend;
+  o.s[d]=(o.s[d]||'')+`M${f(x)} ${f(y)}Q${f(cx)} ${f(cy)} ${f(ex)} ${f(ey)}`;
+  const bud=(bx,by,k)=>{const n=3+(r()*3|0);for(let i=0;i<n;i++){const a=r()*6.283,m=r()*6*k;o.b+=`<circle cx="${f(bx+Math.cos(a)*m)}" cy="${f(by+Math.sin(a)*m)}" r="${f((2+r()*2.6)*k)}" fill="${['#EBCBA6','#F3DDC4','#E3BC93','#F7E8D6'][r()*4|0]}"/>`}o.b+=`<circle cx="${f(bx)}" cy="${f(by)}" r="${f(1.1*k)}" fill="#B58C5E" opacity=".55"/>`};
+  if(d<=0){bud(ex,ey,1);return}
+  bud(ex,ey,.9);const n=2+(r()*2|0);for(let i=0;i<n;i++){const t=.3+.62*(i+r()*.5)/n,px=(1-t)*(1-t)*x+2*(1-t)*t*cx+t*t*ex,py=(1-t)*(1-t)*y+2*(1-t)*t*cy+t*t*ey;bdSprig(r,px,py,ang+(i%2?1:-1)*(20+r()*32),len*(.5+.22*r()),d-1,o)}}
+function bdSymbol(id,seed,flip){const r=bdRand(seed),o={s:[],b:''};
+  [[-6,486,24,172,3],[-8,64,112,118,2],[412,70,-116,140,3],[410,504,-26,176,3]].forEach(a=>bdSprig(r,a[0],a[1],a[2]+(r()-.5)*8,a[3],a[4],o));
+  const stems=o.s.map((d,i)=>d?`<path d="${d}" fill="none" stroke="#B58C5E" stroke-opacity=".6" stroke-width="${(.6+.4*i).toFixed(2)}" stroke-linecap="round"/>`:'').join('');
+  return `<symbol id="${id}" viewBox="0 0 400 500"><g${flip?' transform="translate(400 0) scale(-1 1)"':''}>${stems}${o.b}</g><rect x="13" y="13" width="374" height="474" rx="9" fill="none" stroke="#B8842A" stroke-opacity=".24" vector-effect="non-scaling-stroke"/></symbol>`}
+const bdSprite=()=>`<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false"><defs>${bdSymbol('ipBd0',20070,0)}${bdSymbol('ipBd1',7002,1)}</defs></svg>`;
+const bdMarkup=look=>`<svg class="rw__bd" viewBox="0 0 400 500" aria-hidden="true" focusable="false"><use href="#ipBd${Math.max(0,LOOKS.indexOf(look))%2}"/></svg>`;
 const waLink=t=>`https://wa.me/${SITE.whatsapp}?text=${encodeURIComponent(t)}`;
 const compRect=look=>{const c=PRODUCT_DATA[look.cimg],a=c.ar||1,sw=AR*(1-4/50),sh=1-4/50;let rw=sw,rh=rw/a;if(rh>sh){rh=sh;rw=rh*a}const w=rw/AR*100,h=rh*100;return[(100-w)/2,(100-h)/2,w,h]};
 const slotRects=look=>{if(look.cimg){const r=compRect(look);return look.products.map(id=>{const b=PRODUCT_DATA[id].box;return[r[0]+b[0]*r[2]/100,r[1]+b[1]*r[3]/100,b[2]*r[2]/100,b[3]*r[3]/100]})}return LAYOUTS[look.products.length]||gridLayout(look.products.length)};
 function compMarkup(look){
-  if(look.cimg){const c=PRODUCT_DATA[look.cimg],r=compRect(look);return `<div class="rw__comp"><span class="rw__slot${c.alpha?' has-alpha':''}${c.src?'':' is-missing'}" style="--x:${r[0]}%;--y:${r[1]}%;--w:${r[2]}%;--h:${r[3]}%">${c.src?`<img src="${c.src}" alt="" decoding="async" draggable="false">`:`<i class="fa-solid ${look.icon||'fa-box-open'}" aria-hidden="true"></i>`}</span></div>`}
+  const solo=!look.cimg&&look.products.length===1,bd=bdMarkup(look),cls=`rw__comp${solo?' rw__comp--solo':''}`;
+  if(look.cimg){const c=PRODUCT_DATA[look.cimg],r=compRect(look);return `<div class="${cls}">${bd}<span class="rw__slot${c.alpha?' has-alpha':''}${c.src?'':' is-missing'}" style="--x:${r[0]}%;--y:${r[1]}%;--w:${r[2]}%;--h:${r[3]}%">${c.src?`<img src="${c.src}" alt="" decoding="async" draggable="false">`:`<i class="fa-solid ${look.icon||'fa-box-open'}" aria-hidden="true"></i>`}</span></div>`}
   const rects=slotRects(look);
-  return `<div class="rw__comp">${look.products.map((id,n)=>{const p=PRODUCT_DATA[id],r=rects[n];
+  return `<div class="${cls}">${bd}${look.products.map((id,n)=>{const p=PRODUCT_DATA[id],r=rects[n];
     const inner=p.src?`<img src="${p.src}" alt="" decoding="async" draggable="false">`:`<i class="fa-solid ${look.icon||'fa-box-open'}" aria-hidden="true"></i>`;
-    return `<span class="rw__slot${p.alpha?' has-alpha':''}${p.src?'':' is-missing'}" style="--x:${r[0]}%;--y:${r[1]}%;--w:${r[2]}%;--h:${r[3]}%">${inner}</span>`}).join('')}</div>`;
+    return `<span class="rw__slot${p.alpha?' has-alpha':''}${p.src?'':' is-missing'}" style="--x:${r[0]}%;--y:${r[1]}%;--w:${r[2]}%;--h:${r[3]}%">${inner}</span>`}).join('')}${solo?`<span class="rw__solo-cap" dir="auto">${escapeHTML(PRODUCT_DATA[look.products[0]].name)}</span>`:''}</div>`;
 }
 function modelMarkup(i,clone=false){
   const look=LOOKS[i];
@@ -258,14 +313,14 @@ function modelMarkup(i,clone=false){
     <span class="rw__shadow"></span><div class="rw__figure" style="--rw-ar:${AR}"><div class="rw__art">${compMarkup(look)}<button class="rw__hit" data-rw-go="${i}" aria-label="${escapeHTML(lookLabel(i))}" tabindex="-1"></button></div></div></div>`;
 }
 function heroMarkup(i){
-  const look=LOOKS[i];const rects=slotRects(look);const pins=look.products.map((id,n)=>`<button class="rw__pin" data-rw-pin="${n+1}" data-tip="${escapeHTML(PRODUCT_DATA[id].name)}" style="--pin-x:${rects[n][0]+rects[n][2]/2}%;--pin-y:${rects[n][1]+rects[n][3]/2}%;--pi:${n+1}" aria-label="${n+1}: ${escapeHTML(PRODUCT_DATA[id].name)}" tabindex="-1"><span class="rw__pin-dot">${n+1}</span></button>`).join('');
+  const look=LOOKS[i];const rects=slotRects(look);const pins=look.products.length<2?'':look.products.map((id,n)=>`<button class="rw__pin" data-rw-pin="${n+1}" data-tip="${escapeHTML(PRODUCT_DATA[id].name)}" style="--pin-x:${rects[n][0]+rects[n][2]/2}%;--pin-y:${rects[n][1]+rects[n][3]/2}%;--pi:${n+1}" aria-label="${n+1}: ${escapeHTML(PRODUCT_DATA[id].name)}" tabindex="-1"><span class="rw__pin-dot">${n+1}</span></button>`).join('');
   return `<div class="rw__hero${i===0?' is-on':''}" data-rw-hero data-index="${i}" data-name="${escapeHTML(look.name)}" data-label="${escapeHTML(lookLabel(i))}" aria-hidden="${i===0?'false':'true'}"><div class="rw__morph"><span class="rw__shadow"></span><div class="rw__figure" style="--rw-ar:${AR}"><div class="rw__art">${compMarkup(look)}<button class="rw__zoom" data-rw-zoom aria-label="View collection: ${escapeHTML(look.name)}" tabindex="${i===0?'0':'-1'}"></button><div class="rw__pins">${pins}</div></div></div></div></div>`;
 }
 function lookRowMarkup(cur,j){
   const l=LOOKS[j];const n=j+1;const c=l.products.length;
   return `<li class="rw__item rw__look${j===cur?' is-current':''}" data-rw-jump="${j}" style="--i:${n}" tabindex="0" role="button" aria-label="${escapeHTML(lookLabel(j))}"${j===cur?' aria-current="true"':''}>
     <span class="rw__media">${compMarkup(l)}<span class="rw__num">${n}</span></span>
-    <div class="rw__info"><span class="rw__type">Collection ${pad(n)}</span><span class="rw__name" dir="auto">${escapeHTML(l.name)}</span><span class="rw__desc" dir="auto">${escapeHTML(l.description||'')}</span><span class="rw__price"><span>${c} ${c>1?'products':'product'}</span></span></div>
+    <div class="rw__info"><span class="rw__type">${kindOf(l)} ${pad(n)}</span><span class="rw__name" dir="auto">${escapeHTML(l.name)}</span><span class="rw__desc" dir="auto">${escapeHTML(l.description||'')}</span><span class="rw__price"><span>${c>1?c+' products':'Single piece'}</span></span></div>
     <span class="rw__go" aria-hidden="true"><i class="fa-solid fa-arrow-right-long"></i></span>
   </li>`;
 }
@@ -278,25 +333,25 @@ const money=v=>`${Number(v).toLocaleString('en-US')}${SITE.currency?' '+escapeHT
 const bundleInfo=look=>{const ps=look.products.map(id=>PRODUCT_DATA[id]),sum=ps.reduce((n,p)=>n+p.price,0),all=ps.every(p=>p.price>0),bp=look.bundle||(all?sum:0),bo=look.bundle?(look.bundleOld||(all&&sum>look.bundle?sum:0)):0;return{ps,sum,all,bp,bo}};
 const priceMarkup=p=>{if(!p.price&&!p.badge)return'';const off=p.oldPrice>p.price&&p.price>0;return `<div class="rw__dprice">${p.badge?`<span class="rw__dbadge">${escapeHTML(p.badge)}</span>`:''}${p.note?`<small dir="auto">${escapeHTML(p.note)}</small>`:''}${p.price?`<b>${money(p.price)}</b>`:''}${off?`<s>${money(p.oldPrice)}</s><em>-${Math.round((1-p.price/p.oldPrice)*100)}%</em>`:''}</div>`};
 const bundleText=look=>{const{ps,bp}=bundleInfo(look);return `${SITE.waBundleText}${look.name}\n`+ps.map((p,k)=>`${k+1}. ${p.name}${p.price?` — ${Number(p.price).toLocaleString('en-US')}${SITE.currency?' '+SITE.currency:''}`:''}`).join('\n')+(bp?`\nTotal: ${Number(bp).toLocaleString('en-US')}${SITE.currency?' '+SITE.currency:''}`:'')};
-const footMarkup=look=>{const{bp,bo}=bundleInfo(look);return `<div class="rw__dfoot">${bp?`<div class="rw__dtotal"><span>${look.bundle?'Set price':'Total'}</span><div><b>${money(bp)}</b>${bo>bp?`<s>${money(bo)}</s><em>Save ${money(bo-bp)}</em>`:''}</div></div>`:''}<a class="rw__dall" href="${waLink(bundleText(look))}" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-whatsapp"></i> Ask about the full set</a></div>`};
+const footMarkup=look=>{if(look.products.length<2){const p=PRODUCT_DATA[look.products[0]];return `<div class="rw__dfoot"><a class="rw__dall" href="${waLink(SITE.waProductText+p.name)}" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-whatsapp"></i> Ask about this product</a></div>`}const{bp,bo}=bundleInfo(look);return `<div class="rw__dfoot">${bp?`<div class="rw__dtotal"><span>${look.bundle?'Set price':'Total'}</span><div><b>${money(bp)}</b>${bo>bp?`<s>${money(bo)}</s><em>Save ${money(bo-bp)}</em>`:''}</div></div>`:''}<a class="rw__dall" href="${waLink(bundleText(look))}" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-whatsapp"></i> Ask about the full set</a></div>`};
 function detailMarkup(i){const look=LOOKS[i],n=look.products.length;
-  return `<div class="rw__dhead"><button type="button" class="rw__dback" data-rw-zoom-close><i class="fa-solid fa-arrow-left-long"></i> All collections</button><span class="rw__type">Collection ${pad(i+1)} · ${n} ${n>1?'products':'product'}</span>${look.badge?`<span class="rw__dbadge">${escapeHTML(look.badge)}</span>`:''}<h3 class="rw__dtitle" dir="auto">${escapeHTML(look.name)}</h3>${look.description?`<p class="rw__ddesc" dir="auto">${escapeHTML(look.description)}</p>`:''}</div><div class="rw__dlist">${look.products.map((id,k)=>{const p=PRODUCT_DATA[id];return `<article class="rw__dp" data-rw-dp="${k+1}"><span class="rw__dn">${k+1}</span><div class="rw__dc"><b dir="auto">${escapeHTML(p.name)}</b>${p.desc?`<p dir="auto">${escapeHTML(p.desc)}</p>`:''}${priceMarkup(p)}</div><a class="rw__dwa" href="${waLink(SITE.waProductText+p.name)}" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-whatsapp"></i> Ask on WhatsApp</a></article>`}).join('')}</div>${footMarkup(look)}`}
+  return `<div class="rw__dhead"><button type="button" class="rw__dback" data-rw-zoom-close><i class="fa-solid fa-arrow-left-long"></i> Back to catalog</button><span class="rw__type">${n>1?`Collection ${pad(i+1)} · ${n} products`:`Product ${pad(i+1)}`}</span>${look.badge?`<span class="rw__dbadge">${escapeHTML(look.badge)}</span>`:''}<h3 class="rw__dtitle" dir="auto">${escapeHTML(look.name)}</h3>${look.description?`<p class="rw__ddesc" dir="auto">${escapeHTML(look.description)}</p>`:''}</div><div class="rw__dlist">${look.products.map((id,k)=>{const p=PRODUCT_DATA[id];return `<article class="rw__dp${n<2?' rw__dp--solo':''}" data-rw-dp="${k+1}"><span class="rw__dn">${k+1}</span><div class="rw__dc"><b dir="auto">${escapeHTML(p.name)}</b>${p.desc?`<p dir="auto">${escapeHTML(p.desc)}</p>`:''}${priceMarkup(p)}</div>${n<2?'':`<a class="rw__dwa" href="${waLink(SITE.waProductText+p.name)}" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-whatsapp"></i> Ask on WhatsApp</a>`}</article>`}).join('')}</div>${footMarkup(look)}`}
 function panelMarkup(i){
   const rows=LOOKS.map((_,j)=>lookRowMarkup(i,j)).join('');
   return `<div class="rw__look-panel${i===0?' is-in':''}" data-rw-panel="${i}"${i===0?'':' hidden'}>
-    <div class="rw__mhead"><span class="rw__mhead-title">Collections</span><span class="rw__label">${COUNT} collections</span></div>
+    <div class="rw__mhead"><span class="rw__mhead-title">Catalog</span><span class="rw__label">${COUNT} ${COUNT>1?'items':'item'}</span></div>
     <ul class="rw__items" role="list">${rows}</ul>
-    <template data-rw-pieces-text>${COUNT} collections</template>
+    <template data-rw-pieces-text>${COUNT} ${COUNT>1?'items':'item'}</template>
   </div>`;
 }
 function buildSectionMarkup(){
   const actors=LOOKS.map((_,i)=>modelMarkup(i,false)).join('')+LOOKS.map((_,i)=>modelMarkup(i,true)).join('');
-  return `<div class="rw__sticky"><div class="rw__grid"><div class="rw__left">
+  return `${bdSprite()}<div class="rw__sticky"><div class="rw__grid"><div class="rw__left">
     <div class="rw__head"><div class="rw__intro"><h2 class="rw__title">Infinity Print Hub</h2><p class="rw__sub">Advertising agency since 2007</p></div><span class="rw__sr" aria-live="polite" aria-atomic="true" data-rw-live></span></div>
     <div class="rw__stage" data-rw-stage tabindex="0" role="region" aria-roledescription="carousel" aria-label="Collections — use arrow keys or swipe to change collection"><div class="rw__actors" data-rw-actors>${actors}</div><div class="rw__heroes" data-rw-heroes>${LOOKS.map((_,i)=>heroMarkup(i)).join('')}</div><span class="rw__sweep"></span><span class="rw__cursor" data-rw-cursor><span class="rw__cursor-in"><span class="rw__cursor-label rw__cursor-drag">Drag</span><span class="rw__cursor-label rw__cursor-view">View</span></span></span><span class="rw__walk"><span class="rw__walk-line"></span></span></div>
     <div class="rw__controls"><button class="rw__icon" type="button" data-rw-prev aria-label="Previous collection"><svg width="26" height="14" viewBox="0 0 26 14" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M25 7H1M7 1L1 7l6 6"/></svg></button><div class="rw__ticks">${LOOKS.map((l,i)=>`<button type="button" class="rw__tick" data-rw-tick="${i}" aria-current="${i===0?'true':'false'}" aria-label="${escapeHTML(lookLabel(i))}"><span class="rw__tick-bar"></span><span class="rw__tick-label">0${i+1}<span class="rw__tick-name">&nbsp;&nbsp;${escapeHTML(l.name)}</span></span></button>`).join('')}</div><button class="rw__icon rw__auto" type="button" data-rw-auto aria-pressed="false" aria-label="Autoplay"><svg class="rw__play" width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M7 4.5v15l12.5-7.5z"/></svg><svg class="rw__pause" width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M6.5 4.5h3.5v15H6.5zM14 4.5h3.5v15H14z"/></svg></button><button class="rw__icon" type="button" data-rw-next aria-label="Next collection"><svg width="26" height="14" viewBox="0 0 26 14" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M1 7h24M19 1l6 6-6 6"/></svg></button></div>
     <div class="rw__lb" data-rw-lb role="region" aria-label="Collection details" aria-hidden="true"><div class="rw__lb-stage" data-rw-lb-stage></div><div class="rw__lb-top"><p class="rw__lb-cap"><span class="rw__lb-kicker" data-rw-lb-kicker></span><span class="rw__lb-name" data-rw-lb-name></span></p><button type="button" class="rw__lb-close" data-rw-zoom-close aria-label="Close"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M5 5l14 14M19 5L5 19"/></svg></button></div><div class="rw__lb-info" data-rw-lb-info></div><p class="rw__lb-hint">Tap a dot to view the product</p></div>
-  </div><aside class="rw__panel has-rule"><div class="rw__panel-inner"><div class="rw__panel-head"><h3 class="rw__panel-title">Collections</h3><span class="rw__label" data-rw-pieces>${COUNT} collections</span></div>${panelMarkup(0)}<div class="rw__detail" data-rw-detail></div></div></aside></div></div>`;
+  </div><aside class="rw__panel has-rule"><div class="rw__panel-inner"><div class="rw__panel-head"><h3 class="rw__panel-title">Catalog</h3><span class="rw__label" data-rw-pieces>${COUNT} ${COUNT>1?'items':'item'}</span></div>${panelMarkup(0)}<div class="rw__detail" data-rw-detail></div></div></aside></div></div>`;
 }
 
 class RunwaySection extends HTMLElement{
@@ -333,7 +388,7 @@ class RunwaySection extends HTMLElement{
   bodyRank(body){if(!body)return 0;const a=Number(body.dataset.slot);if(this.mode==='ring'){let d=modulo(a-Math.round(this.target)+COUNT,SLOTS)-COUNT;if(d===-COUNT)d=COUNT;return d;}const d=modulo(a-Math.round(this.target),SLOTS);return d>COUNT?d-SLOTS:d;}
   hot(n,scroll=false){this.clearHot();const dc=this.querySelector(`.rw__detail [data-rw-dp="${n}"]`);if(dc){dc.classList.add('is-hot');if(scroll)dc.scrollIntoView({block:'nearest',behavior:'smooth'})}const pinRoot=this.zoomed?this.lb:this.heroes[this.index];pinRoot?.querySelector(`[data-rw-pin="${n}"]`)?.classList.add('is-hot');const row=this.zoomed?this.lb.querySelector(`[data-rw-lbp="${n}"]`):null;if(row){row.classList.add('is-hot');this.hotCard=row;const box=this.lbInfo;if(scroll&&box&&box.scrollWidth>box.clientWidth+2)box.scrollTo({left:row.offsetLeft-(box.clientWidth-row.offsetWidth)/2,behavior:this.motion.matches?'auto':'smooth'})}}
   clearHot(){this.querySelectorAll('.is-hot').forEach(x=>x.classList.remove('is-hot'));this.hotCard=null}
-  openPopup(){if(this.zoomed)return;this.engage();this.clearHot();const hero=this.heroes[this.index];const morph=hero.querySelector('.rw__morph');const sourceFigure=morph.querySelector('.rw__figure');const r=sourceFigure.getBoundingClientRect();const model=document.createElement('div');model.className='rw__lb-model';model.style.setProperty('--rw-model-h','160px');const shadow=morph.querySelector('.rw__shadow').cloneNode(true);const figure=sourceFigure.cloneNode(true);figure.style.height='';figure.querySelector('.rw__zoom')?.remove();figure.querySelectorAll('[data-rw-pin]').forEach(p=>p.tabIndex=0);model.append(shadow,figure);this.lbStage.replaceChildren(model);const h=this.lbFigureHeight();model.style.setProperty('--rw-model-h',`${h}px`);figure.style.height=`${h}px`;this.querySelector('[data-rw-lb-kicker]').textContent=`Collection ${pad(this.index+1)}`;this.querySelector('[data-rw-lb-name]').textContent=LOOKS[this.index].name;this.lbInfo.innerHTML=lbInfoMarkup(this.index);this.lbInfo.scrollLeft=0;this.lb.setAttribute('aria-hidden','false');this.querySelector('[data-rw-detail]').innerHTML=detailMarkup(this.index);this.zoomed=true;this.classList.add('rw--zoom');if(!this.motion.matches){const b=figure.getBoundingClientRect();model.style.transition='none';model.style.transform=`translate3d(${r.left-b.left}px,${r.bottom-b.bottom}px,0) scale(${r.height/b.height})`;void model.offsetWidth;model.style.transition='';model.style.transform='';}this.querySelector('[data-rw-zoom-close]').focus({preventScroll:true});}
+  openPopup(){if(this.zoomed)return;this.engage();this.clearHot();const hero=this.heroes[this.index];const morph=hero.querySelector('.rw__morph');const sourceFigure=morph.querySelector('.rw__figure');const r=sourceFigure.getBoundingClientRect();const model=document.createElement('div');model.className='rw__lb-model';model.style.setProperty('--rw-model-h','160px');const shadow=morph.querySelector('.rw__shadow').cloneNode(true);const figure=sourceFigure.cloneNode(true);figure.style.height='';figure.querySelector('.rw__zoom')?.remove();figure.querySelectorAll('[data-rw-pin]').forEach(p=>p.tabIndex=0);model.append(shadow,figure);this.lbStage.replaceChildren(model);const h=this.lbFigureHeight();model.style.setProperty('--rw-model-h',`${h}px`);figure.style.height=`${h}px`;this.querySelector('[data-rw-lb-kicker]').textContent=`${kindOf(LOOKS[this.index])} ${pad(this.index+1)}`;this.querySelector('[data-rw-lb-name]').textContent=LOOKS[this.index].name;this.lbInfo.innerHTML=lbInfoMarkup(this.index);this.lbInfo.scrollLeft=0;this.lb.setAttribute('aria-hidden','false');this.querySelector('[data-rw-detail]').innerHTML=detailMarkup(this.index);if(LOOKS[this.index].products.length<2)this.hot(1,false);this.zoomed=true;this.classList.add('rw--zoom');if(!this.motion.matches){const b=figure.getBoundingClientRect();model.style.transition='none';model.style.transform=`translate3d(${r.left-b.left}px,${r.bottom-b.bottom}px,0) scale(${r.height/b.height})`;void model.offsetWidth;model.style.transition='';model.style.transform='';}this.querySelector('[data-rw-zoom-close]').focus({preventScroll:true});}
   lbFigureHeight(){const cs=getComputedStyle(this.lbStage);const w=this.lbStage.clientWidth-parseFloat(cs.paddingLeft)-parseFloat(cs.paddingRight);const h=this.lbStage.clientHeight-parseFloat(cs.paddingTop)-parseFloat(cs.paddingBottom);return Math.max(160,Math.min(h,w/AR));}
   closePopup(returnFocus=true){if(!this.zoomed)return;const model=this.lbStage.querySelector('.rw__lb-model');if(model&&!this.motion.matches){const src=this.heroes[this.index].querySelector('.rw__figure').getBoundingClientRect();const dest=model.querySelector('.rw__figure').getBoundingClientRect();model.style.transform=`translate3d(${src.left-dest.left}px,${src.bottom-dest.bottom}px,0) scale(${src.height/dest.height})`;}this.zoomed=false;this.classList.remove('rw--zoom');this.lb.setAttribute('aria-hidden','true');setTimeout(()=>{if(!this.zoomed)this.lbStage.replaceChildren()},this.motion.matches?0:950);if(returnFocus)this.stage.focus({preventScroll:true});this.scheduleAutoplay();}
   pointerDown(e){if(e.button!==undefined&&e.button!==0)return;this.pointerState={x:e.clientX,y:e.clientY,t:this.target,id:e.pointerId,samples:[{x:e.clientX,time:performance.now()}],drag:false};}
